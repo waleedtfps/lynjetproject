@@ -17,15 +17,15 @@ class RegistrationController extends Controller
 
 	public function create(){
 
-	    			
+
 		//getting data and validating
 		$validator = Validator::make(Input::all(),array(
 				'name'=> 'required',
 				'email'=> 'email|required|unique:users',
 				'password'=> 'required|min:6|confirmed'
-				
 
-				));  		
+
+				));
 
 		if ($validator->fails())
 			{
@@ -34,9 +34,10 @@ class RegistrationController extends Controller
 			    return Redirect::to('/register')->withErrors($validator)->withInput();
 
 			}
+		
 
 		 else
-	    	{	
+	    	{
 	    		$confirmation_code = str_random(30);
 
 
@@ -48,8 +49,8 @@ class RegistrationController extends Controller
 	                'type' => Input::get('type'),
 	                'confirmation_code' => $confirmation_code
 	            ));
-	             
-	          
+
+
 		    	Mail::send('conf.email',['confirmation_code'=> $confirmation_code,'name'=>Input::get('name')],function($message)
 							{
 							   $message->from('admin@hotmail.com','Laravel');
@@ -58,9 +59,9 @@ class RegistrationController extends Controller
                 ->subject('Verify your email address');
 							});
 
-	    		  
+
 	            return Redirect::to('confirmation');
-		            
+
 			}
 
 	}
@@ -78,25 +79,25 @@ class RegistrationController extends Controller
             return 'invalid user';
         }
 
-        
+
         $user->confirmation_code = null;
         $user->save();
-        
-        	
+
+
         		$company = new Company;
 		        $company->id_user =$user->id;
 		        $company->save();
 
-        	
-       
-        
+
+
+
 
         return Redirect::to('login')->with('message','This is it Login to Continue.');
     }
 
 	public function index(){
 
-		
+
 		return view('user.register');
 	}
 
