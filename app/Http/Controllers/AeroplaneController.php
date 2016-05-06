@@ -19,16 +19,16 @@ use App\Excluded;
 class AeroplaneController extends Controller
 {
     public function index(){
-        
+
             $aeroplane = DB::table('airplane')
             ->join('airplanetype', 'airplanetype.id', '=', 'airplane.id_type')
             ->select('*')
             ->orderBy('airplane.id', 'DESC')
             ->paginate(15);
-          
 
-        
-    	
+
+
+
     	return view('aeroplanes.index',compact('aeroplane'));
     }
     public function create(){
@@ -38,10 +38,10 @@ class AeroplaneController extends Controller
          $airports = Airport::all();
     	return view('aeroplanes.create',compact('airplanetype','companies','excluded','airports'));
     }
-    
+
     public function store(Request $request){
     	$user = User::find(Auth::user()->id);
-        
+
     	$aeroplane = new Aeroplane;
     	$aeroplane->ref = Input::get('ref');
     	$aeroplane->base = Input::get('base');
@@ -84,11 +84,11 @@ class AeroplaneController extends Controller
         $aeroplane->is_africa_permitted = Input::get('africa');
         $aeroplane->is_waiver_program_member = Input::get('Waiver');
         $aeroplane->quality = Input::get('quality');
-        $aeroplane->configuration = Input::get('config'); 
+        $aeroplane->configuration = Input::get('config');
         $aeroplane->comment = Input::get('comment');
-        $aeroplane->active = Input::get('active'); 
+        $aeroplane->active = Input::get('active');
         $aeroplane->red_flag = Input::get('redflag-radio');
-        $aeroplane->id_excluded = Input::get('location');        
+        $aeroplane->id_excluded = Input::get('location');
     	$aeroplane->save();
         $files = $request->file('file');
                 if(Input::hasFile('file')):
@@ -100,42 +100,46 @@ class AeroplaneController extends Controller
                 $media->id_airplane = $aeroplane->id;
                 $media->save();
             }
-                
+
             endforeach;
-                
+
         endif;
         $location  =Input::get('location');
         $location=trim($location);
-        $location=rtrim($location,',');// 
+        $location=rtrim($location,',');//
         $abc = explode(",", $location);
-       
+
         foreach($abc as $a):
                 $excluded = new Excluded;
-                $excluded->location = $a; 
+                $excluded->location = $a;
                 $excluded->id_airplane = $aeroplane->id;
                 $excluded->save();
             endforeach;
 
         //return \Response::json(array('success' => true));
-        	
+
 
     	return redirect('aeroplanes')->with('message','Successfully Added!');
-        
-        
-        
 
-    
+
+
+
+
     }
     public function edit($id) {
-        
-         $aeroplane =Airport::find($id);
-         
-         
-        	return view('aeroplane.edit', compact('airports','fuel','airporttype'));
-        
+
+         $aeroplanes =Aeroplane::findOrFail($id);
+         $excluded = Excluded::all();
+         $airplanetype = AirplaneType::all();
+         $companies = Company::all();
+         $airports = Airport::all();
+         return view('aeroplanes.edit',compact('airplanetype','companies','excluded','airports','aeroplanes'));
+
+
+
     }
-    
-    
+
+
     public function update($id)
     {
         $aeroplane =Aeroplane::find($id);
@@ -175,8 +179,8 @@ class AeroplaneController extends Controller
         $aeroplane->internet_connection_cost_per_mb = Input::get('net_mb_extra');
         $aeroplane->wheelchair_assistance_price = Input::get('Wheelchair_assistance_cost');
         $aeroplane->is_africa_permitted = Input::get('africa');
-        $aeroplane->is_waiver_program_member = Input::get('Waiver'); 
+        $aeroplane->is_waiver_program_member = Input::get('Waiver');
         return Redirect::to('aeroplanes')->with('message','updated sucessfully!');
     }
-            
+
 }

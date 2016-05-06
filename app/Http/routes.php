@@ -55,13 +55,22 @@ Route::group(['middleware' => 'App\Http\Middleware\RedirectIfNotSuperadmin'], fu
 	route::get('fuel/edit/{id}','AirportFuelController@edit');
 	route::post('fuel/update/{id}','AirportFuelController@update');
 	route::get('fuel/delete/{id}','AirportFuelController@delete');
-	
-	
+
+      //aeroplanes
+  route::get('aeroplanes','AeroplaneController@index');
+	route::get('aeroplanes/edit/{id}','AeroplaneController@edit');
+	route::get('aeroplanes/show','AeroplaneController@show');
+	route::get('aeroplanes/create','AeroplaneController@create');
+	route::post('aeroplanes/store','AeroplaneController@store');
+	route::get('aeroplanes/update/{id}','AeroplaneController@update');
+	route::get('aeroplanes/delete/{id}','AeroplaneController@delete');
+
+
 });
 //admin routes
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
-    
+
     Route::get('adminpanel','AdminController@index');
     Route::get('logout','AdminController@logout');
   	Route::get('users',function(){
@@ -108,11 +117,11 @@ Route::group(['middleware'=> '\App\Http\Middleware\RedirectIfNotCompany'],functi
 	route::post('airplane/motor/store','ArpMotorController@store');
 });
 
-        
+
 // route::get('media','MediaController@index');
-// Route::post('upload', 'MediaController@upload');      
-// 
-// 
+// Route::post('upload', 'MediaController@upload');
+//
+//
 // site routes
 route::get('search','SearchController@index');
 route::post('results','SearchController@result');

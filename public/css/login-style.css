@@ -1,5 +1,5 @@
 .content-wrap{
-	background: url('../../images/admin/background/background-seat-1080p.jpg') center center;
+	background: url('../images/admin/background/background-seat-1080p.jpg') center center;
 	background-size:cover;
 	background-repeat: no-repeat;
 	min-height: 100vh;
@@ -11,7 +11,7 @@
 	top: 35%;
 	transform: translate(-50%,-50%);
 }
-.login-box{	
+.login-box{
 	position: absolute;
 	left: 50%;
 	top: 30%;

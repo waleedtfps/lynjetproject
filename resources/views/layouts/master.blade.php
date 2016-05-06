@@ -23,12 +23,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect.
   -->
   <link rel="stylesheet" href="{{asset("/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css")}}">
-  <link rel="stylesheet" type="text/css" href="{{asset("/bower_components/css/style.css")}}">
+  <link rel="stylesheet" type="text/css" href="{{asset("/css/style.css")}}">
   <link rel="stylesheet" type="text/css" href="{{asset("bower_components/multiselect/css/multi-select.css")}}">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" href="{{URL::asset("../bower_components/wickedpicker/dist/wickedpicker.min.css")}}">
+  <link rel="stylesheet" href="{{asset("/bower_components/wickedpicker/dist/wickedpicker.min.css")}}">
 
-    
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -79,7 +79,7 @@ desired effect
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  
+
   	@include('layouts.footer')
 
   <!-- Control Sidebar -->
@@ -173,7 +173,7 @@ desired effect
 
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  
+
 
 <script>
   $(document).ready(function(){
@@ -196,7 +196,7 @@ desired effect
 
 });
 </script>
-<script src="{{URL::asset('../bower_components/wickedpicker/dist/wickedpicker.min.js')}}"></script>
+<script src="{{asset('/bower_components/wickedpicker/dist/wickedpicker.min.js')}}"></script>
 @yield('scripts')
 <script  src="{{asset("/bower_components/AdminLTE/dist/js/app.min.js")}}"></script>
 
