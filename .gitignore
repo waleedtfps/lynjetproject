@@ -1,0 +1,9 @@
+/vendor
+
+/nbproject
+/public/bower_components
+!/.bowerrc
+!/.env
+!/.gitignore
+!/.gitattributes
+!/.env.example
