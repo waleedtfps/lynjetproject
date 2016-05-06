@@ -1,0 +1,8 @@
+.admin-name{
+	font-size:20px;
+	text-transform: capitalize;
+	display: inline;
+}
+.logo-lg img{
+	width: 80px;
+}

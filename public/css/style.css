@@ -1,0 +1,103 @@
+.content{
+	overflow:auto;
+	min-height: 100vh;
+}
+.cta-btn a{
+	display: inline-block;
+	padding: 10px 40px;
+	color:white;
+	background: #3c8dbc;
+	border:#3c8dbc;
+	text-transform: capitalize;
+	box-shadow: 1px 2px 4px grey;
+	margin: 10px auto;
+	color:white;
+	font-size:18px;
+	transition: 300ms ease-in-out;
+}
+.btn-add a:hover{
+	background-color: white;
+	color:#3c8dbc;
+	border:#3c8dbc;
+}
+.cta-small-round a{
+	border-radius: 30px;
+	padding: 5px 20px;
+	text-transform: capitalize;
+	font-size: 14px;
+}
+.admin-name{
+	font-size:20px;
+	text-transform: capitalize;
+	display: inline;
+}
+.logo-lg img{
+	width: 80px;
+}
+#file {
+  display: none; }
+
+i {
+  vertical-align: middle;
+  margin-right: 10px;
+  font-size: 1em;
+  -webkit-transition: 300ms ease-in-out;
+          transition: 300ms ease-in-out;
+  -webkit-transform: translateX(0px);
+      -ms-transform: translateX(0px);
+          transform: translateX(0px); }
+
+.label-input {
+  font-weight: 300;
+  display: inline-block;
+  color: #fff;
+  background: #3C8DBC;
+  padding: 5px 40px;
+  border-radius: 0px;
+  text-transform: capitalize;
+  box-shadow: 1px 2px 5px black;
+  cursor: pointer; }
+  .label-input:hover i {
+    -webkit-transform: translateX(-10px);
+        -ms-transform: translateX(-10px);
+            transform: translateX(-10px); 
+        }
+
+.tab-content{
+	margin-top: 30px;
+
+}
+.fullheight{
+	min-height: 100vh;
+}
+.align-top{
+	vertical-align: top !important;
+}
+
+.padzero{
+	padding-left: 0px !important;
+}
+.fee{
+	display: none;
+}
+.active_field{
+	display: block !important;
+}
+.quality{
+	margin-top: 30px;
+}
+.button-div{
+	margin-top: 20px;
+	padding-right: 15px;
+}
+.button-div .btn a{
+	color: white;
+}
+.text-left{
+	text-align: left !important;
+}
+
+
+.content-header{
+	margin-bottom: 30px;
+}
