@@ -16,6 +16,12 @@ Route::post('/login','LoginController@authenticate');
 Route::get('/register','RegistrationController@index');
 Route::post('/register',"RegistrationController@create");
 Route::get('/confirmation','ConfController@index');
+//password reset
+route::get('/password/reset','ResetController@getEmail');
+route::post('/password/reset','ResetController@postEmail');
+route::get('/newpassword/{reset_token}','ResetController@getPass');
+route::post('/newpassword/{reset_token}','ResetController@postPass');
+
 
 route::get('/','SearchController@index');
 
