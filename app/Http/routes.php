@@ -13,6 +13,7 @@
 
 Route::get('/login','LoginController@index');
 Route::post('/login','LoginController@authenticate');
+
 Route::get('/register','RegistrationController@index');
 Route::post('/register',"RegistrationController@create");
 Route::get('/confirmation','ConfController@index');

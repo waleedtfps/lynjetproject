@@ -15,7 +15,7 @@ class LoginController extends Controller
     }
     public function authenticate(){
 
-        if (Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')])){   
+        if (Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')])){
 
             if(Auth::user()->type=='superadmin'){
                 return redirect::to('superadmin');
@@ -26,7 +26,7 @@ class LoginController extends Controller
             }
 
             if(Auth::User()->confirmation_code== null){
-               
+
                 if(Auth::User()->type=='company'){
 
                     return Redirect::to('company')->with('message','Welcome');
@@ -36,9 +36,10 @@ class LoginController extends Controller
 
 
             }
-                   
+
         else{
         	return Redirect::back()->withInput(Input::except('password'))->with('message','Email or password is not correct, please try again.');
         }
     }
+   
 }
