@@ -80,7 +80,7 @@
                                   <td>{{$aeroplanes->seat}}</td>
 
                                  
-                                  <td><button action="#" class="btn-sm btn btn-primary">Edit</button>|<button class="btn btn-sm btn-danger">Delete</button>  </td>
+                                  <td><a href="{{URL::to('company/aeroplanes/edit/' .$aeroplanes->id)}}" class="btn-sm btn btn-primary">Edit</a>|<a href="{{URL::to('company/aeroplanes/delete/' .$aeroplanes->id)}}" class="btn btn-sm btn-danger">Delete</a>  </td>
                                </tr>
                            @endforeach
                             </tbody>

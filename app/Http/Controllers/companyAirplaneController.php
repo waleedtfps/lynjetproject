@@ -26,13 +26,14 @@ class companyAirplaneController extends Controller
             $join->on('airplane.id_type', '=', 'airplanetype.id')
                  ->where('id_company','=',Auth::user()->id);
         })->paginate(15);
+            
     	return view('company.aeroplanes.index',compact('aeroplane'));
     	
     }
     public function create(){
          $excluded = Excluded::all();
          $airplanetype = AirplaneType::all();
-         $companies = Company::where('id_user','=',Auth::user()->id)->get();
+         $companies = Company::where('id','=',Auth::user()->id)->get();
          $airports = Airport::all();
          //var_dump($companies[0]->id);
     	return view('company.aeroplanes.create',compact('airplanetype','companies','excluded','airports'));
@@ -42,22 +43,23 @@ class companyAirplaneController extends Controller
     	$user = User::find(Auth::user()->id);
         
     	$aeroplane = new Aeroplane;
-    	$aeroplane->ref = Input::get('ref');
-    	$aeroplane->base = Input::get('base');
-    	$aeroplane->id_type = Input::get('id_type');
+        $aeroplane->ref = Input::get('ref');
+        $aeroplane->base = Input::get('base');
+        $aeroplane->id_type = Input::get('id_type');
         $aeroplane->registration = Input::get('reg');
         $aeroplane->id_company = Input::get('id_company');
-    	$aeroplane->yom = Input::get('yom');
-    	$aeroplane->yor = Input::get('yor');
+        $aeroplane->yom = Input::get('yom');
+        $aeroplane->yor = Input::get('yor');
+        $aeroplane->is_minimum_2_crews = Input::get('min_crew_members');
         $aeroplane->seat = Input::get('seats');
         $aeroplane->rating = Input::get('rating');
-        $aeroplane->is_minimum_2_crews = Input::get('2crew');
+        
         $aeroplane->is_smoking_permitted = Input::get('smoke');
         $aeroplane->is_pet_admitted = Input::get('pet');
         $aeroplane->is_hot_catering_available_in_cabin = Input::get('catering');
         $aeroplane->is_owner_approval_needed = Input::get('owner');
         $aeroplane->is_allowed_to_perform_worldwide= Input::get('worldwide');
-    	$aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
+        $aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
         $aeroplane->skis_luggage_number = Input::get('luggage_no');
         $aeroplane->skis_number = Input::get('skis_no');
         $aeroplane->golf_bag_in_luggage_compartment = Input::get('golfbag');
@@ -83,12 +85,12 @@ class companyAirplaneController extends Controller
         $aeroplane->is_africa_permitted = Input::get('africa');
         $aeroplane->is_waiver_program_member = Input::get('Waiver');
         $aeroplane->quality = Input::get('quality');
-        $aeroplane->configuration = Input::get('config'); 
+        $aeroplane->configuration = Input::get('config');
         $aeroplane->comment = Input::get('comment');
-        $aeroplane->active = Input::get('active'); 
+        $aeroplane->active = Input::get('active');
         $aeroplane->red_flag = Input::get('redflag-radio');
-        $aeroplane->id_excluded = Input::get('location');        
-    	$aeroplane->save();
+        $aeroplane->id_excluded = Input::get('location');
+        $aeroplane->save();
         $files = $request->file('file');
                 if(Input::hasFile('file')):
 
@@ -99,24 +101,26 @@ class companyAirplaneController extends Controller
                 $media->id_airplane = $aeroplane->id;
                 $media->save();
             }
-                
+
             endforeach;
-                
+
         endif;
         $location  =Input::get('location');
         $location=trim($location);
-        $location=rtrim($location,',');// 
+        $location=rtrim($location,',');//
         $abc = explode(",", $location);
-       
+
         foreach($abc as $a):
                 $excluded = new Excluded;
-                $excluded->location = $a; 
+                $excluded->location = $a;
                 $excluded->id_airplane = $aeroplane->id;
                 $excluded->save();
             endforeach;
 
         //return \Response::json(array('success' => true));
-        	
+
+
+        
 
     	return redirect('company/aeroplanes')->with('message','Successfully Added!');
         
@@ -126,11 +130,12 @@ class companyAirplaneController extends Controller
     
     }
     public function edit($id) {
-        
-         $aeroplane =Airport::find($id);
-         
-         
-        	return view('aeroplane.edit', compact('airports','fuel','airporttype'));
+         $aeroplanes =Aeroplane::findOrFail($id);
+         $excluded = Excluded::all();
+         $airplanetype = AirplaneType::all();
+         $companies = Company::where('id','=',Auth::user()->id)->get();
+         $airports = Airport::all();
+         return view('company.aeroplanes.edit',compact('airplanetype','companies','excluded','airports','aeroplanes'));
         
     }
     
@@ -139,18 +144,20 @@ class companyAirplaneController extends Controller
     {
         $aeroplane =Aeroplane::find($id);
         $aeroplane->ref = Input::get('ref');
-    	$aeroplane->base = Input::get('base');
-    	$aeroplane->_type = Input::get('type');
-    	$aeroplane->yom = Input::get('yom');
-    	$aeroplane->yor = Input::get('yor');
+          $aeroplane->base = Input::get('base');
+          $aeroplane->id_type = Input::get('id_type');
+          $aeroplane->yom = Input::get('yom');
+        $aeroplane->is_minimum_2_crews = Input::get('min_crew_members');
+          $aeroplane->yor = Input::get('yor');
         $aeroplane->seat = Input::get('seats');
-        $aeroplane->is_minimum_2_crews = Input::get('2crew');
+        $aeroplane->rating = Input::get('rating');
+        $aeroplane->id_company = Input::get('id_company');
         $aeroplane->is_smoking_permitted = Input::get('smoke');
         $aeroplane->is_pet_admitted = Input::get('pet');
         $aeroplane->is_hot_catering_available_in_cabin = Input::get('catering');
         $aeroplane->is_owner_approval_needed = Input::get('owner');
         $aeroplane->is_allowed_to_perform_worldwide= Input::get('worldwide');
-    	$aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
+          $aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
         $aeroplane->skis_luggage_number = Input::get('luggage_no');
         $aeroplane->skis_number = Input::get('skis_no');
         $aeroplane->golf_bag_in_luggage_compartment = Input::get('golfbag');
@@ -174,7 +181,14 @@ class companyAirplaneController extends Controller
         $aeroplane->internet_connection_cost_per_mb = Input::get('net_mb_extra');
         $aeroplane->wheelchair_assistance_price = Input::get('Wheelchair_assistance_cost');
         $aeroplane->is_africa_permitted = Input::get('africa');
-        $aeroplane->is_waiver_program_member = Input::get('Waiver'); 
-        return Redirect::to('aeroplanes')->with('message','updated sucessfully!');
+        $aeroplane->is_waiver_program_member = Input::get('Waiver');
+        $aeroplane->configuration = Input::get('config');
+        $aeroplane->comment = Input::get('comment');
+        $aeroplane->active = Input::get('active');
+        $aeroplane->red_flag = Input::get('redflag-radio');
+        $aeroplane->id_excluded = Input::get('location');
+        $aeroplane->update();
+        return Redirect::to('company/aeroplanes')->with('message','successfully updated!');
+        
     }
 }

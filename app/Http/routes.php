@@ -101,12 +101,12 @@ Route::group(['middleware'=> '\App\Http\Middleware\RedirectIfNotCompany'],functi
 	route::post('profile/update','CompanyController@update');
 	//aeroplane
 	route::get('company/aeroplanes','companyAirplaneController@index');
-	route::get('company/aeroplanes/edit','companyAirplaneController@edit');
+	route::get('company/aeroplanes/edit/{id}','companyAirplaneController@edit');
 	route::get('company/aeroplanes/show','companyAirplaneontroller@show');
 	route::get('company/aeroplanes/create','companyAirplaneController@create');
 	route::post('company/aeroplanes/store','companyAirplaneController@store');
-	route::get('aeroplanes/update/{id}','AeroplaneController@update');
-	route::get('aeroplanes/delete/{id}','AeroplaneController@delete');
+	route::post('company/aeroplanes/update/{id}','companyAirplaneController@update');
+	route::get('company/aeroplanes/delete/{id}','companyAirplaneController@delete');
 	//airplane category
 	route::get('airplane/category','ArpCategoryController@index');
 	route::get('airplane/category/create','ArpCategoryController@create');
