@@ -30,7 +30,7 @@ class ResetController extends Controller
               $message->to(Input::get('email'))
                       ->subject('reset password');
             });
-          return 'we have sent you an email, please check it.';
+          return view('user.reset.view_message');
         }
         else{
           return redirect::to('login')->with('message','invalid username or email.');
