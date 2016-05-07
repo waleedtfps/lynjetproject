@@ -22,14 +22,14 @@ class AirportController extends Controller
     	return view('airports.create', compact('airporttypes','fuel'));
     }
     public function store(){
-	    $airports = new Airport;
-	    $airports->icao = Input::get('field_icao');
-	    $airports->iata = Input::get('field_iata');
-		$airports->dataorigin = Input::get('field_dataorigin');
-		$airports->name = Input::get('field_name');
-		$airports->countryiso2 = Input::get('field_countryiso2');
-        $airports->city = Input::get('field_city');
-        $airports->idtype= Input::get('type');
+    $airports = new Airport;
+    $airports->icao = Input::get('field_icao');
+    $airports->iata = Input::get('field_iata');
+    $airports->dataorigin = Input::get('field_dataorigin');
+    $airports->name = Input::get('field_name');
+    $airports->countryiso2 = Input::get('field_countryiso2');
+    $airports->city = Input::get('field_city');
+    $airports->idtype= Input::get('type');
 		$airports->latitude = Input::get('field_latitude');
 		$airports->longitude = Input::get('field_longitude');
 		$airports->elevationfeet = Input::get('field_elevationfeet');
@@ -63,21 +63,21 @@ class AirportController extends Controller
     }
     public function edit($id) {
         $airporttypes = AirportType::all();
-         $airports =Airport::find($id);
-         $fuels = AirportFuel::all();
-         
+       $airports =Airport::find($id);
+       $fuels = AirportFuel::all();
+
         	return view('airports.edit', compact('airports','fuels','airporttypes'));
-        
+
     }
     public function update($id) {
-			$airports =Airport::find($id);
-			$airports->icao = Input::get('field_icao');
-		    $airports->iata = Input::get('field_iata');
-			$airports->dataorigin = Input::get('field_dataorigin');
-			$airports->name = Input::get('field_name');
-			$airports->countryiso2 = Input::get('field_countryiso2');
-	        $airports->city = Input::get('field_city');
-	        $airports->idtype= Input::get('type');
+      $airports =Airport::find($id);
+      $airports->icao = Input::get('field_icao');
+      $airports->iata = Input::get('field_iata');
+      $airports->dataorigin = Input::get('field_dataorigin');
+      $airports->name = Input::get('field_name');
+      $airports->countryiso2 = Input::get('field_countryiso2');
+      $airports->city = Input::get('field_city');
+      $airports->idtype= Input::get('type');
 			$airports->latitude = Input::get('field_latitude');
 			$airports->longitude = Input::get('field_longitude');
 			$airports->elevationfeet = Input::get('field_elevationfeet');
@@ -108,15 +108,15 @@ class AirportController extends Controller
 			$airports->idfuel = Input::get('id_fuel');
 			$airports->update();
             return Redirect::to('airports')->with('message','successfully updated!');
-        
+
     }
-    
-    
+
+
     public function delete($id)
     {
         $airports =Airport::find($id);
         $airports->delete();
          return Redirect::to('airports')->with('message','Deleted sucessfully!');
     }
-        
+
 }

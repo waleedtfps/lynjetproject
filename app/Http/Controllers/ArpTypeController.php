@@ -17,26 +17,26 @@ class ArpTypeController extends Controller
             ->join('airplanetype', 'airplanemotor.id', '=', 'airplanetype.id_motor')
             ->select('*')
             ->get();
-        
+
     	return view('aeroplanes.type.index',compact('airplanetypes'));
     }
     public function create(){
         $category = AirplaneCategory::All();
-        $motor = AirplaneMotor::All();       
+        $motor = AirplaneMotor::All();
     	return view('aeroplanes.type.create',compact('category','motor'));
     }
     public function store(){
-    	
-    	$airplanetype = new AirplaneType;
-    	$airplanetype->type = Input::get('type');
-        $airplanetype->speed = Input::get('speed');
-    	$airplanetype->alltitude = Input::get('altitude');
-    	$airplanetype->cabinheight = Input::get('cabinheight');
-    	$airplanetype->cabinwidth = Input::get('cabinwidth');
-    	$airplanetype->cabinlength = Input::get('cabinlength');
-    	$airplanetype->range = Input::get('range');
-    	$airplanetype->id_category = Input::get('id_category');
-        $airplanetype->id_motor = Input::get('id_motor');
+
+      $airplanetype = new AirplaneType;
+      $airplanetype->type = Input::get('type');
+      $airplanetype->speed = Input::get('speed');
+      $airplanetype->alltitude = Input::get('altitude');
+      $airplanetype->cabinheight = Input::get('cabinheight');
+      $airplanetype->cabinwidth = Input::get('cabinwidth');
+      $airplanetype->cabinlength = Input::get('cabinlength');
+      $airplanetype->range = Input::get('range');
+      $airplanetype->id_category = Input::get('id_category');
+      $airplanetype->id_motor = Input::get('id_motor');
     	$airplanetype->save();
     	return redirect::to('airplane/type');
     }
@@ -47,7 +47,7 @@ class ArpTypeController extends Controller
         return view('aeroplanes.type.edit',compact('airplanetype','category','motor'));
     }
     public function update($id){
-        
+
         $airplanetype = AirplaneType::findOrFail($id);
         $airplanetype->type = Input::get('type');
         $airplanetype->speed = Input::get('speed');

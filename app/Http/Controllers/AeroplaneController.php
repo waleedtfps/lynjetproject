@@ -20,8 +20,8 @@ class AeroplaneController extends Controller
 {
     public function index(){
 
-            $aeroplane = DB::table('airplane')
-            ->join('airplanetype', 'airplanetype.id', '=', 'airplane.id_type')
+            $aeroplane = DB::table('airplanetype')
+            ->join('airplane', 'airplanetype.id', '=', 'airplane.id_type')
             ->select('*')
             ->orderBy('airplane.id', 'DESC')
             ->paginate(15);
@@ -50,15 +50,16 @@ class AeroplaneController extends Controller
         $aeroplane->id_company = Input::get('id_company');
     	$aeroplane->yom = Input::get('yom');
     	$aeroplane->yor = Input::get('yor');
+        $aeroplane->is_minimum_2_crews = Input::get('min_crew_members');
         $aeroplane->seat = Input::get('seats');
         $aeroplane->rating = Input::get('rating');
-        $aeroplane->is_minimum_2_crews = Input::get('2crew');
+        
         $aeroplane->is_smoking_permitted = Input::get('smoke');
         $aeroplane->is_pet_admitted = Input::get('pet');
         $aeroplane->is_hot_catering_available_in_cabin = Input::get('catering');
         $aeroplane->is_owner_approval_needed = Input::get('owner');
         $aeroplane->is_allowed_to_perform_worldwide= Input::get('worldwide');
-    	$aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
+	    $aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
         $aeroplane->skis_luggage_number = Input::get('luggage_no');
         $aeroplane->skis_number = Input::get('skis_no');
         $aeroplane->golf_bag_in_luggage_compartment = Input::get('golfbag');
@@ -144,18 +145,20 @@ class AeroplaneController extends Controller
     {
         $aeroplane =Aeroplane::find($id);
         $aeroplane->ref = Input::get('ref');
-    	$aeroplane->base = Input::get('base');
-    	$aeroplane->_type = Input::get('type');
-    	$aeroplane->yom = Input::get('yom');
-    	$aeroplane->yor = Input::get('yor');
+    	  $aeroplane->base = Input::get('base');
+    	  $aeroplane->id_type = Input::get('id_type');
+    	  $aeroplane->yom = Input::get('yom');
+        $aeroplane->is_minimum_2_crews = Input::get('min_crew_members');
+    	  $aeroplane->yor = Input::get('yor');
         $aeroplane->seat = Input::get('seats');
-        $aeroplane->is_minimum_2_crews = Input::get('2crew');
+        $aeroplane->rating = Input::get('rating');
+        $aeroplane->id_company = Input::get('id_company');
         $aeroplane->is_smoking_permitted = Input::get('smoke');
         $aeroplane->is_pet_admitted = Input::get('pet');
         $aeroplane->is_hot_catering_available_in_cabin = Input::get('catering');
         $aeroplane->is_owner_approval_needed = Input::get('owner');
         $aeroplane->is_allowed_to_perform_worldwide= Input::get('worldwide');
-    	$aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
+    	  $aeroplane->skis_in_luggage_compartment = Input::get('skis_luggage');
         $aeroplane->skis_luggage_number = Input::get('luggage_no');
         $aeroplane->skis_number = Input::get('skis_no');
         $aeroplane->golf_bag_in_luggage_compartment = Input::get('golfbag');
@@ -180,7 +183,18 @@ class AeroplaneController extends Controller
         $aeroplane->wheelchair_assistance_price = Input::get('Wheelchair_assistance_cost');
         $aeroplane->is_africa_permitted = Input::get('africa');
         $aeroplane->is_waiver_program_member = Input::get('Waiver');
-        return Redirect::to('aeroplanes')->with('message','updated sucessfully!');
+        $aeroplane->configuration = Input::get('config');
+        $aeroplane->comment = Input::get('comment');
+        $aeroplane->active = Input::get('active');
+        $aeroplane->red_flag = Input::get('redflag-radio');
+        $aeroplane->id_excluded = Input::get('location');
+        $aeroplane->update();
+        return Redirect::to('aeroplanes')->with('message','successfully updated!');
+    }
+    public function delete($id){
+        $aeroplane = Aeroplane::find($id);
+        $aeroplane->delete();
+        return Redirect::to('aeroplanes')->with('message','successfully deleted!');
     }
 
 }

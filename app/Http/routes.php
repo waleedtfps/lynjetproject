@@ -76,7 +76,7 @@ Route::group(['middleware' => 'App\Http\Middleware\RedirectIfNotSuperadmin'], fu
 	route::get('aeroplanes/show','AeroplaneController@show');
 	route::get('aeroplanes/create','AeroplaneController@create');
 	route::post('aeroplanes/store','AeroplaneController@store');
-	route::get('aeroplanes/update/{id}','AeroplaneController@update');
+	route::post('aeroplanes/update/{id}','AeroplaneController@update');
 	route::get('aeroplanes/delete/{id}','AeroplaneController@delete');
 
 

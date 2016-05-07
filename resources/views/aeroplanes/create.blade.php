@@ -4,7 +4,7 @@
 
 <div class="col-sm-12 box fullheight">
     <!-- Nav tabs -->
-     <form class="form-horizontal" role="form" action="{{URL::to('aeroplanes/store')}}"  enctype="multipart/form-data" method="POST">            
+     <form class="form-horizontal" role="form" action="{{URL::to('aeroplanes/store')}}"  enctype="multipart/form-data" method="POST">
                 {!! csrf_field() !!}
     <div class="col-md-12">
                 <div class="quality text-right">
@@ -32,17 +32,17 @@
              </div>
     <ul class="nav nav-tabs" role="tablist" style="margin-top: 30px;">
         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Main</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Specification</a></li>    
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Specification</a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Services/Facilities</a></li>
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Airports</a></li>
-        <li role="presentation"><a href="#config" aria-controls="settings" role="tab" data-toggle="tab">Config/Comments</a></li> 
+        <li role="presentation"><a href="#config" aria-controls="settings" role="tab" data-toggle="tab">Config/Comments</a></li>
 
     </ul>
 
-   
-        
+
+
         <div class="box-body">
-           
+
 
                 <div class="tab-content">
 
@@ -65,23 +65,23 @@
 
                         <div class="form-group  col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Base</label>
-                            <div class=" col-sm-7"> 
-                               
+                            <div class=" col-sm-7">
+
                                 <select name="base" class="form-control" >
                                     <option class="form-control" value="ANDR|Gre">ANDR|Gre</option>
                                     <option value="SNDS|La Ocean Bus">SNDS|La Ocean Bus</option>
                                     <option value="PDF|la Pro">PDF|la Pro</option>
                                 </select>
-                               
+
                             </div>
                         </div>
                         <div class="form-group  col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Company</label>
-                            <div class=" col-sm-7"> 
+                            <div class=" col-sm-7">
                                 <select class="form-control " id="sel1" name="id_company">
                                    @foreach($companies as $company)
                                 <option value="{{$company->id}}">{{$company->company_name}}</option>
-                                @endforeach 
+                                @endforeach
                                 </select>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                     </div>
 
 
-                    <div role="tabpanel" class="tab-pane" id="profile">      
+                    <div role="tabpanel" class="tab-pane" id="profile">
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Seats(without toilet seat)</label>
@@ -136,78 +136,72 @@
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Minimum 2 crew members?</label>
 
-                            <label class="radio-inline"><input type="radio" checked="checked" name="2crew" value="crewy" >yes</label>
-                            <label class="radio-inline"><input type="radio" name="2crew" value="crewn">no</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="min_crew_members" value="1" >yes</label>
+                            <label class="radio-inline"><input type="radio" name="min_crew_members" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Smoking permitted?</label>
 
-                            <label class="radio-inline"><input type="radio"  name="smoke" value="smokey">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="smoke" value="smoken">no</label>
+                            <label class="radio-inline"><input type="radio"  name="smoke" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="smoke" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Pet permitted?</label>
 
-                            <label class="radio-inline"><input type="radio" name="pet" value="pety">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="pet" value="petn">no</label>
+                            <label class="radio-inline"><input type="radio" name="pet" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="pet" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Hot catering in cabin?</label>
 
-                            <label class="radio-inline"><input type="radio" name="catering" value="cateringy">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="catering" value="cateringn">no</label>
+                            <label class="radio-inline"><input type="radio" name="catering" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="catering" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Owner approval needed?</label>
 
-                            <label class="radio-inline"><input type="radio" name="owner" value="ownery">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="owner" value="ownern">no</label>
+                            <label class="radio-inline"><input type="radio" name="owner" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="owner" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Allowed to perform worldwide?</label>
 
-                            <label class="radio-inline"><input type="radio" name="worldwide" value="worldwidey">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="worldwide" value="worldwiden">no</label>
+                            <label class="radio-inline"><input type="radio" name="worldwide" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="worldwide" value="0">no</label>
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label class="control-label col-sm-4 text-left" for="">Excluded countries</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="excluded_countries">
-                            </div>
-                        </div>
-
+                        
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Skis in luggage compartment?</label>
 
-                            <label class="radio-inline"><input type="radio" name="skis_luggage" value="skis_luggage_y">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="skis_luggage" value="skis_luggage_n">no</label>
+                            <label class="radio-inline"><input type="radio" name="skis_luggage" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="skis_luggage" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">If 'yes' how many luggage</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="luggage_no">
+                                <input type="text" class="form-control" id="email"  name="luggage_no">
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">If 'yes' how many skiss</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="skis_no">
+                                <input type="text" class="form-control" id="email"  name="skis_no">
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Golf bag in luggage compartment?</label>
 
-                            <label class="radio-inline"><input type="radio" name="golfbag" value="golfbagy">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="golfbag" value="golfbagn">no</label>
+                            <label class="radio-inline"><input type="radio" name="golfbag" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="golfbag" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -233,11 +227,11 @@
 
                     </div>
 
-                    <div role="tabpanel" class="tab-pane" id="messages"> 
+                    <div role="tabpanel" class="tab-pane" id="messages">
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Included catering type</label>
-                            <div class=" col-sm-4"> 
+                            <div class=" col-sm-4">
                                 <select class="form-control" id="sel1" name="catering_type">
                                     <option>1</option>
                                     <option>2</option>
@@ -245,72 +239,72 @@
                                     <option>4</option>
                                 </select>
                             </div>
-                        </div>                        
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Flight attendent included?</label>
 
-                            <label class="radio-inline"><input type="radio" name="flight_attendent" value="flight_attendent_y">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="flight_attendent" value="flight_attendent_n">no</label>
-                        </div>                        
+                            <label class="radio-inline"><input type="radio" name="flight_attendent" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="flight_attendent" value="0">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Flight attendent number</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="flight_attendent_no">
+                                <input type="text" class="form-control" id="email" name="flight_attendent_no">
                             </div>
-                        </div>                                     
+                        </div>
 
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">If no is it upon request and on extra charge?</label>
 
-                            <label class="radio-inline"><input type="radio" name="attendent_extra" value="attendent_extra_y">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="attendent_extra" value="attendent_extra_n">no</label>
-                        </div>                             
+                            <label class="radio-inline"><input type="radio" name="attendent_extra" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="attendent_extra" value="0">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Flight attendent extra charges</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="attendent_extra_charge">
+                                <input type="text" class="form-control" id="email"  name="attendent_extra_charge">
                             </div>
-                        </div>              
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Engineer cost</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="engineer_cost">
+                                <input type="text" class="form-control" id="email"  name="engineer_cost">
                             </div>
-                        </div>                           
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Has bedroom?</label>
 
-                            <label class="radio-inline"><input type="radio" name="bedroom" value="bedroomy">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="bedroom" value="bedroomn">no</label>
-                        </div>                            
+                            <label class="radio-inline"><input type="radio" name="bedroom" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="bedroom" value="0">no</label>
+                        </div>
 
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Possible beds with additional mattress?</label>
 
-                            <label class="radio-inline"><input type="radio" name="additional_matteres" value="additional_matteresy">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="additional_matteres" value="additional_matteresn">no</label>
-                        </div>                            
+                            <label class="radio-inline"><input type="radio" name="additional_matteres" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="additional_matteres" value="0">no</label>
+                        </div>
 
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">If 'yes' how many beds</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" placeholder="" name="beds_no">
+                                <input type="text" class="form-control" id="email" name="beds_no">
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Individual screen?</label>
 
-                            <label class="radio-inline"><input type="radio" name="Individual_screen" value="screeny">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="Individual_screen" value="screenn">no</label>
+                            <label class="radio-inline"><input type="radio" name="Individual_screen" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="Individual_screen" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -318,27 +312,27 @@
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="email" placeholder="" name="screens_no">
                             </div>
-                        </div>                        
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Ipad tablet number</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="email" placeholder="" name="tablet_no">
                             </div>
-                        </div>    
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Ipad tablet cost(per item)</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="email" placeholder="" name="tablet_cost">
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Internet connection?</label>
 
-                            <label class="radio-inline"><input type="radio" name="Internet_connection" value="Internet_connectiony">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="Internet_connection" value="Internet_connectionn">no</label>
+                            <label class="radio-inline"><input type="radio" name="Internet_connection" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="Internet_connection" value="0">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -346,33 +340,33 @@
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="email" placeholder="" name="net_mb_extra">
                             </div>
-                        </div>                          
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Wheelchair assistance cost</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="email" placeholder="" name="Wheelchair_assistance_cost">
                             </div>
-                        </div>                         
-                    </div>  
+                        </div>
+                    </div>
 
-                    <div role="tabpanel" class="tab-pane" id="settings"> 
+                    <div role="tabpanel" class="tab-pane" id="settings">
 
                         <div class="col-md-12 padzero" style="margin-bottom: 30px;">
                             <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Africa permitted?</label>
 
-                            <label class="radio-inline"><input type="radio" name="africa" value="africay">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="africa" value="african">no</label>
-                        </div> 
+                            <label class="radio-inline"><input type="radio" name="africa" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="africa" value="0">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Waiver program member?</label>
 
-                            <label class="radio-inline"><input type="radio" name="Waiver" value="Waivery">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="Waiver" value="Waivern">no</label>
+                            <label class="radio-inline"><input type="radio" name="Waiver" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" name="Waiver" value="0">no</label>
                         </div>
-                        </div> 
+                        </div>
                         <h4> Airplane and crew qualified to perform in following locations</h4>
                         <hr style="border-top:1px solid black; margin-top: 5px;margin-bottom: 30px;">
 
@@ -380,48 +374,48 @@
                             <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Figari</label>
 
-                            <label class="radio-inline"><input type="radio" name="figari-radio">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="figari-radio">no</label>
-                        </div> 
+                            <label class="radio-inline"><input type="radio" name="figari-radio" value="1">yes</label>
+                            <label class="radio-inline"><input type="radio" checked="checked" value="0" name="figari-radio">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">London City</label>
 
-                            <label class="radio-inline"><input type="radio" name="london-radio">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="london-radio">no</label>
-                        </div> 
+                            <label class="radio-inline"><input type="radio" value="1" name="london-radio">yes</label>
+                            <label class="radio-inline"><input type="radio" value="0" checked="checked" name="london-radio">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">La Mole</label>
 
-                            <label class="radio-inline"><input type="radio" name="lamole-radio">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="lamole-radio">no</label>
+                            <label class="radio-inline"><input type="radio" value="1" name="lamole-radio">yes</label>
+                            <label class="radio-inline"><input type="radio" value="0" checked="checked" name="lamole-radio">no</label>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Annecy</label>
 
-                            <label class="radio-inline"><input type="radio" name="annecy-radio">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="annecy-radio">no</label>
-                        </div> 
+                            <label class="radio-inline"><input type="radio" value="1" name="annecy-radio">yes</label>
+                            <label class="radio-inline"><input type="radio" value="0" checked="checked" name="annecy-radio">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Cannes</label>
 
-                            <label class="radio-inline"><input type="radio" name="cannes-radio">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="cannes-radio">no</label>
-                        </div> 
+                            <label class="radio-inline"><input type="radio" value="1" name="cannes-radio">yes</label>
+                            <label class="radio-inline"><input type="radio" value="0" checked="checked" name="cannes-radio">no</label>
+                        </div>
 
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Samedan</label>
 
-                            <label class="radio-inline"><input type="radio" name="samedan-radio">yes</label>
-                            <label class="radio-inline"><input type="radio" checked="checked" name="samedan-radio">no</label>
-                        </div> 
+                            <label class="radio-inline"><input type="radio" value="1" name="samedan-radio">yes</label>
+                            <label class="radio-inline"><input type="radio" value="0" checked="checked" name="samedan-radio">no</label>
+                        </div>
 
                         </div>
 
-                        <h4> Please add locations your aircraft is not approved to get into</h4>   
+                        <h4> Please add locations your aircraft is not approved to get into</h4>
                         <hr style="border-top:1px solid black; margin-top: 5px;margin-bottom: 30px;">
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Locations
@@ -429,12 +423,12 @@
                             <div class="col-sm-7 ui-widget">
                                 <input type="text" class="form-control" id="loc" name="location">
                             </div>
-                        </div> 
+                        </div>
 
-                        
+
 
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="config"> 
+                    <div role="tabpanel" class="tab-pane" id="config">
                         <div class="form-group col-md-6">
                             <label for="" class="control-label col-sm-4 text-left">Configuration</label>
                             <div class="col-sm-7">
@@ -444,18 +438,18 @@
                         <div class="form-group col-md-6">
                             <label class="control-label col-sm-4 text-left" for="">Red Flag</label>
                             <div class="col-sm-7">
-                                    <label class="radio-inline"><input type="radio" name="redflag-radio">yes</label>
-                                <label class="radio-inline"><input type="radio" checked="checked" name="redflag-radio">no</label>
+                                    <label class="radio-inline"><input type="radio" value="1" name="redflag-radio">yes</label>
+                                <label class="radio-inline"><input type="radio" value="0" checked="checked" name="redflag-radio">no</label>
                             </div>
-                            
+
                         </div>
                         <div class="form-group col-md-6">
                                 <label  class="control-label col-sm-4 text-left">Comment</label>
                             <div class="col-sm-7"><textarea name="comment" id="" class="form-control" rows="5" cols="20"></textarea></div>
                         </div>
-                       
+
                         <div class="col-md-12 padzero">
-                            <input class="btn btn-primary col-sm-2" type="submit"> 
+                            <input class="btn btn-primary col-sm-2" type="submit">
                         </div>
                     </div>
 
@@ -463,7 +457,7 @@
 
             </form>
         </div>
-    </div>                
+    </div>
 </div>
 </div>
 
@@ -484,7 +478,7 @@
     function extractLast( term ) {
       return split( term ).pop();
     }
- 
+
     $( "#loc" )
       // don't navigate away from the field on tab when selecting an item
       .bind( "keydown", function( event ) {

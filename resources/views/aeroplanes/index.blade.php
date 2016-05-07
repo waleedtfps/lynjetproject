@@ -78,11 +78,10 @@
                                   <td>{{$aeroplanes->yor}}</td>
                                   <td>{{$aeroplanes->type}}</td>
                                   <td>{{$aeroplanes->seat}}</td>
-                                  <td>{{$aeroplanes->id_company}}</td>
-                                  <td>{{$aeroplanes->id}}</td>
+                                
 
 
-                                  <td><a href="{{URL::to('aeroplanes/edit/'.$aeroplanes->id)}}" class="btn-sm btn btn-primary">Edit</a>|<button class="btn btn-sm btn-danger">Delete</button>  </td>
+                                  <td><a href="{{URL::to('aeroplanes/edit/'.$aeroplanes->id)}}" class="btn-sm btn btn-primary">Edit</a>|<a href="{{URL::to('aeroplanes/delete/'.$aeroplanes->id)}}" class="btn btn-sm btn-danger">Delete</a>  </td>
                                </tr>
                            @endforeach
                             </tbody>
